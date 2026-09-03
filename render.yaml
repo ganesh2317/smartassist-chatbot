@@ -1,0 +1,57 @@
+databases:
+  - name: smartassist-db
+    plan: free
+    region: singapore
+    databaseName: smartassist
+
+services:
+  - type: web
+    name: smartassist-api
+    runtime: python
+    plan: free
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: PYTHON_VERSION
+        value: "3.12.10"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: smartassist-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: AI_MODEL
+        value: openai/gpt-oss-20b
+      - key: AI_TIMEOUT
+        value: "30"
+      - key: CORS_ORIGINS
+        sync: false
+      - key: MAX_MESSAGE_CHARS
+        value: "8000"
+      - key: MAX_HISTORY_MESSAGES
+        value: "16"
+      - key: AUTH_RATE_LIMIT_PER_MINUTE
+        value: "10"
+      - key: CHAT_RATE_LIMIT_PER_MINUTE
+        value: "30"
+      - key: UPLOAD_RATE_LIMIT_PER_MINUTE
+        value: "8"
+      - key: MAX_UPLOAD_MB
+        value: "10"
+      - key: MAX_DOCUMENT_CHARS
+        value: "1500000"
+      - key: MAX_DOCUMENTS_PER_USER
+        value: "50"
+      - key: RAG_TOP_K
+        value: "5"
+      - key: RAG_MAX_CONTEXT_CHARS
+        value: "8000"

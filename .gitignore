@@ -1,0 +1,17 @@
+node_modules/
+.env
+__pycache__/
+*.pyc
+venv/
+.venv/
+dist/
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+backend/data/*.db
+backend/data/*.sqlite*
+.pytest_cache/
+backend/data/*.db-wal
+backend/data/*.db-shm
