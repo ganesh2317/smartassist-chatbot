@@ -15,3 +15,5 @@ backend/data/*.sqlite*
 .pytest_cache/
 backend/data/*.db-wal
 backend/data/*.db-shm
+
+.vercel

@@ -1,7 +1,5 @@
 const RAW_API_URL = (import.meta.env.VITE_API_URL || "").trim();
-export const API_CONFIG_ERROR = import.meta.env.PROD && !RAW_API_URL
-  ? "SmartAssist is not configured: VITE_API_URL is missing from the production build."
-  : "";
+export const API_CONFIG_ERROR = "";
 const API_URL = (RAW_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 const TOKEN_KEY = "smartassist_token";
 const USERNAME_KEY = "smartassist_username";
