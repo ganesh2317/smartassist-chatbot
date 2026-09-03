@@ -1,6 +1,6 @@
-const RAW_API_URL = (import.meta.env.VITE_API_URL || "").trim();
+const RAW_API_URL = (import.meta.env.VITE_API_URL || "https://smartassist-api.onrender.com").trim();
 export const API_CONFIG_ERROR = "";
-const API_URL = (RAW_API_URL || "http://localhost:8000").replace(/\/+$/, "");
+const API_URL = (RAW_API_URL || "https://smartassist-api.onrender.com").replace(/\/+$/, "");
 const TOKEN_KEY = "smartassist_token";
 const USERNAME_KEY = "smartassist_username";
 
